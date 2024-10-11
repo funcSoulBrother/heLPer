@@ -1,2 +1,6 @@
 # heLPer
- A repository for an album collection app named heLPer
+heLPer (get it? The L and the P are capitalized?) is an app used to help you keep track of your music collection. Users can search for albums using the Discogs API. heLPer then allows users to mark albums as owned as well as add albums to a wish list. This helps users to keep inventory of their current collection as well as make sure they don’t forget about albums they may want to own in the future. It’s also just a fun way to visualize their present and future album collection!
+
+heLPer’s home screen will begin with the heLPer logo and a search bar that will let the user browse Discogs’ database of music albums. At the bottom will be three tabs: one that will take the user to their current collection, one that will take the user to their album wish list, and one that’ll take the user back to the home screen. Badges may also be included on the Collection and Wish List tabs to keep a count of the albums contained in each list. 
+
+I believe that heLPer should be an app that sparsely uses colors as the album art in the UI will shine that much brighter. This is also in accordance with Apple Human Interface Guidelines and will make the app easy to be adapted when used in dark mode. Standard font will be used (SF font).  An effort will be made to support Dynamic Type as well and any button or tab views will use SF Symbols to help users understand their functions. 
