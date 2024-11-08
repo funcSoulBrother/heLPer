@@ -13,6 +13,8 @@ struct AlbumDetails: View {
     var body: some View {
         VStack {
             Image(album.albumCover)
+                .resizable()
+                .frame(width: 250, height: 250)
             Text(album.title)
                 .padding()
                 .font(.system(size: 32))
@@ -21,7 +23,42 @@ struct AlbumDetails: View {
             Text(album.year)
                 .padding()
                 .font(.system(size: 18))
-            
+            if album.inCollection == false {
+                Button("Add to Collection") {
+                    album.inCollection = true
+                    }
+                .padding(6)
+                .background(Color.gray)
+                .foregroundColor(.black)
+                .cornerRadius(30)
+                }
+            else {
+                Button("Remove from Collection") {
+                    album.inCollection = false
+                }
+                .padding(6)
+                .background(Color.gray)
+                .foregroundColor(.black)
+                .cornerRadius(30)
+                }
+            if album.inWishList == false {
+                Button("Add to Wish List") {
+                    album.inWishList = true
+                }
+                .padding(6)
+                .background(Color.gray)
+                .foregroundColor(.black)
+                .cornerRadius(30)
+            }
+            else {
+                Button("Remove from Wish List") {
+                    album.inWishList = false
+                }
+                .padding(6)
+                .background(Color.gray)
+                .foregroundColor(.black)
+                .cornerRadius(30)
+            }
         }
     }
 }

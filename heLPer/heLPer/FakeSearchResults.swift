@@ -1,21 +1,21 @@
 //
-//  CollectionView.swift
+//  FakeSearchResults.swift
 //  heLPer
 //
-//  Created by Daniel Marsh on 10/11/24.
+//  Created by Daniel Marsh on 11/8/24.
 //
 
 import SwiftUI
 
-struct CollectionView: View {
-    var isInCollection = allAlbums.filter { $0.inCollection == true }
+struct FakeSearchResults: View {
+    var isNotInCollectionOrWishList = allAlbums.filter { $0.inCollection == false && $0.inWishList == false }
     
     var body: some View {
         
         
             NavigationStack {
                 
-                List(isInCollection) { album in
+                List(isNotInCollectionOrWishList) { album in
                     NavigationLink(album.title, value: album)
                     }
                     .navigationDestination(
@@ -24,11 +24,11 @@ struct CollectionView: View {
                           AlbumDetails(album: album)
                     }
                 )
-            .navigationTitle("Collection")
+            .navigationTitle("Fake Search Results")
         }
     }
 }
 
 #Preview {
-    CollectionView()
+    FakeSearchResults()
 }
