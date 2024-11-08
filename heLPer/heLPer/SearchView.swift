@@ -8,16 +8,31 @@
 import SwiftUI
 
 struct SearchView: View {
+    @State private var showSearchResults = false
+    
     var body: some View {
-        VStack {
-            Image("helperlogo")
+        NavigationView {
+            VStack {
+                Image("helperlogo")
+                    .padding()
+            NavigationLink(destination: FakeSearchResults(), isActive: $showSearchResults) {
+                Button("Fake Search Bar That's Actually a Button", systemImage: "magnifyingglass") {
+                    self.showSearchResults = true
+                        }
                 .padding()
-            Capsule()
-                .fill(.gray)
-                .frame(height: 50)
+                .background(Color.gray)
+                .foregroundColor(.white)
+                .cornerRadius(30)
+                    }
+                }
+            .offset(y: -85)
+                //            Capsule()
+                //                .fill(.gray)
+                //                .frame(height: 50)
+                //        }
+                //        .padding()
+                //        .offset(y: -100)
         }
-        .padding()
-        .offset(y: -100)
     }
 }
 

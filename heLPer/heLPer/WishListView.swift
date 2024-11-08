@@ -8,41 +8,25 @@
 import SwiftUI
 
 struct WishListView: View {
+    var isInWishList = allAlbums.filter { $0.inWishList == true }
+    
     var body: some View {
+        
+        
             NavigationStack {
                 
-                List {
-                    HStack {
-                        Image("angels&we")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                        VStack {
-                            Text("Angels & Airwaves")
-                            Text("We Don't Need to Whisper")
-                        }
+                List(isInWishList) { album in
+                    NavigationLink(album.title, value: album)
                     }
-                    HStack {
-                        Image("copelandixora")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                        VStack {
-                            Text("Copeland")
-                            Text("Ixora")
-                        }
+                    .navigationDestination(
+                        for: Album.self,
+                      destination: { album in
+                          AlbumDetails(album: album)
                     }
-                    HStack {
-                        Image("systemofsteal")
-                            .resizable()
-                            .frame(width: 100, height:100)
-                        VStack {
-                            Text("System of a Down")
-                            Text("Steal This Album!")
-                        }
-                    }
-                }
-                .navigationTitle("Wish List")
-            }
+                )
+            .navigationTitle("Wish List")
         }
+    }
 }
 
 #Preview {

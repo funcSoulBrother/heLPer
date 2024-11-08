@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedTab = 1
+    @AppStorage("selectedTab") private var savedSelectedTab: Int = 1
+    
     var body: some View {
        
         
-        TabView (selection: $selectedTab) {
+        TabView (selection: $savedSelectedTab) {
             CollectionView()
                 .tabItem{
                     Label("Collection", systemImage: "music.note.house.fill")
