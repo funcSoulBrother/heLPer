@@ -27,39 +27,37 @@ struct AlbumDetails: View {
                 Button("Add to Collection") {
                     album.inCollection = true
                     }
-                .padding(6)
-                .background(Color.gray)
-                .foregroundColor(.black)
-                .cornerRadius(30)
+                .detailsButtonStyle()
                 }
             else {
                 Button("Remove from Collection") {
                     album.inCollection = false
                 }
-                .padding(6)
-                .background(Color.gray)
-                .foregroundColor(.black)
-                .cornerRadius(30)
+                .detailsButtonStyle()
                 }
             if album.inWishList == false {
                 Button("Add to Wish List") {
                     album.inWishList = true
                 }
-                .padding(6)
-                .background(Color.gray)
-                .foregroundColor(.black)
-                .cornerRadius(30)
+                .detailsButtonStyle()
             }
             else {
                 Button("Remove from Wish List") {
                     album.inWishList = false
                 }
-                .padding(6)
-                .background(Color.gray)
-                .foregroundColor(.black)
-                .cornerRadius(30)
+                .detailsButtonStyle()
             }
         }
+    }
+}
+
+extension View {
+
+    func detailsButtonStyle() -> some View {
+        self.padding(6)
+            .background(Color.gray)
+            .foregroundColor(.black)
+            .cornerRadius(30)
     }
 }
 
