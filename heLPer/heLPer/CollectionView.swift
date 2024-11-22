@@ -8,41 +8,25 @@
 import SwiftUI
 
 struct CollectionView: View {
+    var isInCollection = allAlbums.filter { $0.inCollection == true }
+    
     var body: some View {
+        
+        
             NavigationStack {
                 
-                List {
-                    HStack {
-                        Image("anberlinblueprints")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                        VStack {
-                            Text("Anberlin")
-                            Text("Blueprints for the Black Market")
-                        }
+                List(isInCollection) { album in
+                    NavigationLink(album.title, value: album)
                     }
-                    HStack {
-                        Image("handsomedevillove")
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                        VStack {
-                            Text("Handsome Devil")
-                            Text("Love & Kisses from the Underground")
-                        }
+                    .navigationDestination(
+                        for: Album.self,
+                      destination: { album in
+                          AlbumDetails(album: album)
                     }
-                    HStack {
-                        Image("deathcabcodes")
-                            .resizable()
-                            .frame(width: 100, height:100)
-                        VStack {
-                            Text("Death Cab for Cutie")
-                            Text("Codes and Keys")
-                        }
-                    }
-                }
-                .navigationTitle("Collection")
-            }
+                )
+            .navigationTitle("Collection")
         }
+    }
 }
 
 #Preview {
