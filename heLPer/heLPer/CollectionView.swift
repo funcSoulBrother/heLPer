@@ -29,6 +29,7 @@ struct CollectionView: View {
     }
 }
 
+
 #Preview {
     CollectionView()
 }
