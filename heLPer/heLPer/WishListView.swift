@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WishListView: View {
     var isInWishList = allAlbums.filter { $0.inWishList == true }
+    @Environment(\.modelContext) private var context
+//    @Query var albums: [Album] = []
     
     var body: some View {
         

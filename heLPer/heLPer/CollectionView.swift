@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct CollectionView: View {
     var isInCollection = allAlbums.filter { $0.inCollection == true }
+    @Environment(\.modelContext) private var context
+    @Query var albums: [Album]
+    
     
     var body: some View {
         
-        
             NavigationStack {
-                
                 List(isInCollection) { album in
                     NavigationLink(album.title, value: album)
                     }
@@ -25,6 +27,16 @@ struct CollectionView: View {
                     }
                 )
             .navigationTitle("Collection")
+            .overlay {
+                if isInCollection.isEmpty {
+                    ContentUnavailableView(label: {
+                        Label("Collection is Empty", systemImage: "globe")
+                    }, description: {
+                        Text("Do something or whatever, geez.")
+                    })
+                }
+            }
+            .offset(y: -40)
         }
     }
 }

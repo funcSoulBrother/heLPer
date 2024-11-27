@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AlbumDetails: View {
+    @Environment(\.modelContext) private var context
     @Bindable var album: Album
+    @Query var albums: [Album]
     
     var body: some View {
         VStack {
@@ -25,7 +28,10 @@ struct AlbumDetails: View {
                 .font(.system(size: 18))
             if album.inCollection == false {
                 Button("Add to Collection") {
+//                    var album = Album(title: album.title, artist: album.artist, albumCover: album.albumCover, year: album.year, inCollection: album.inCollection, inWishList: album.inWishList)
+                    context.insert(album)
                     album.inCollection = true
+                    print("fuckfuckfuckfuck")
                     }
                 .detailsButtonStyle()
                 }
