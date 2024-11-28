@@ -11,13 +11,11 @@ import SwiftData
 struct RealSearchResults: View {
     var notInCollectionOrWishList: [Album] = allAlbums.filter { $0.inCollection == false && $0.inWishList == false }
     @Environment(\.modelContext) private var context
-    @Query var albums: [Album]
+    @Query(sort: \Album.artist, order: .forward) var albums: [Album]
     
     var body: some View {
         
-        
         NavigationStack {
-            
             List(notInCollectionOrWishList) { album in
                 NavigationLink(destination: AlbumDetails(album: album)) {
                     HStack {
