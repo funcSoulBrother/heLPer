@@ -84,7 +84,7 @@ class AlbumAPIService {
 //        author: "Author",
 //        description:
 //        """
-//        Lorem ipsum dolor sito amet, consectetur adipiscing elit, sed do eiusmod tempor
+//        Lorem ipsum dolor si amet, consectetur adipiscing elit, sed do eiusmod tempor
 //        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
 //        """,
 //        urlToImage: "https://picsum.photos/300"
