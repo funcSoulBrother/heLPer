@@ -9,7 +9,7 @@
 //import OSLog
 import SwiftUI
 
-struct AlbumWowTests: Codable {
+struct APIAlbum: Codable {
     let title: String
     let albumCover: String
     let year: String
@@ -21,8 +21,8 @@ struct AlbumWowTests: Codable {
     }
 }
 
-func getAlbumSearchResults() async throws -> AlbumWowTests {
-    @State var searchText = "Beatles"
+func getAlbumSearchResults() async throws -> APIAlbum {
+    @State var searchText = ""
     let apiKey = "PqXYavZvWWSOCvvVZIdaJLdgjQcvlFJWBWdnvBLY"
     let endpoint = "https://api.discogs.com/database/search?q=\(searchText)&token=\(apiKey)"
     guard let url = URL(string: endpoint) else {
@@ -34,7 +34,7 @@ func getAlbumSearchResults() async throws -> AlbumWowTests {
     }
     do {
         let decoder = JSONDecoder()
-        return try decoder.decode(AlbumWowTests.self, from: data)
+        return try decoder.decode(APIAlbum.self, from: data)
     } catch {
         throw AlbumError.invalidData
     }
@@ -46,15 +46,15 @@ enum AlbumError: Error {
     case invalidData
 }
 
-struct AlbumAPIView: View {
-    @State private var albumSearchResultsWow: AlbumWowTests?
+struct AlbumAPITest: View {
+    @State private var searchResultsAlbum: APIAlbum?
     var body: some View {
         VStack {
             Text("This is a test view, yes it is.")
                 .font(.largeTitle)
-            Text(albumSearchResultsWow?.title ?? "NO TITLE")
-            Text(albumSearchResultsWow?.year ?? "NO YEAR")
-            AsyncImage(url: URL(string: albumSearchResultsWow?.albumCover ?? "")) {
+            Text(searchResultsAlbum?.title ?? "NO TITLE")
+            Text(searchResultsAlbum?.year ?? "NO YEAR")
+            AsyncImage(url: URL(string: searchResultsAlbum?.albumCover ?? "")) {
                 image in image
                     .resizable()
                     .frame(width: 100, height: 100)
@@ -67,7 +67,7 @@ struct AlbumAPIView: View {
         }
         .task {
             do {
-                albumSearchResultsWow = try await getAlbumSearchResults()
+                searchResultsAlbum = try await getAlbumSearchResults()
             } catch {
             
                 }
@@ -137,5 +137,5 @@ struct AlbumAPIView: View {
 //}
 
 #Preview {
-    AlbumAPIView()
+    AlbumAPITest()
 }

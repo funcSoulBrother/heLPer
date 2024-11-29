@@ -20,7 +20,9 @@ struct SearchView: View {
             .searchable(text: $searchText, prompt: Text("Enter Artist and Hit Enter"))
             .onSubmit(of: .search) {
               let apiKey = "PqXYavZvWWSOCvvVZIdaJLdgjQcvlFJWBWdnvBLY"
-              guard let url = URL(string: "https://api.discogs.com/database/search?q=\(searchText)&token=\(apiKey)") else {
+              guard let url = URL(string:
+                                    "https://api.discogs.com/database/search?q=\(searchText)&token=\(apiKey)")
+                               else {
                 print("Invalid URL")
                 return
               }
@@ -46,7 +48,7 @@ struct SearchView: View {
             }
                 
                 
-            NavigationLink(destination: RealSearchResults(), isActive: $showSearchResults) {
+                NavigationLink(destination: AlbumAPITest(), isActive: $showSearchResults) {
                 Button("Fake Search Bar That's Actually a Button", systemImage: "magnifyingglass") {
                     self.showSearchResults = true
                         }

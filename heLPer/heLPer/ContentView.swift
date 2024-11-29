@@ -21,7 +21,7 @@ struct ContentView: View {
                     Label("Collection", systemImage: "music.note.house.fill")
                 }
                 .tag(0)
-            SearchView()
+            ContentViewTwo()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass.circle.fill")
                 }
