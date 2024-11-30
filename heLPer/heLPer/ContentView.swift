@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
     @AppStorage("selectedTab") private var savedSelectedTab: Int = 1
+    
     
     var body: some View {
        
@@ -19,14 +21,14 @@ struct ContentView: View {
                     Label("Collection", systemImage: "music.note.house.fill")
                 }
                 .tag(0)
-            SearchView()
+            ContentViewTwo()
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass.circle.fill")
                 }
                 .tag(1)
             WishListView()
                 .tabItem {
-                    Label("Wish List", systemImage: "star.square.fill")
+                    Label("Wish List", systemImage: "heart.square.fill")
                 }
                 .tag(2)
         }

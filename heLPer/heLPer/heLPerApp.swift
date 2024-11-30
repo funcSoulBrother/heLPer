@@ -11,7 +11,9 @@ import SwiftUI
 struct heLPerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            AlbumAPITest()
+                .modelContainer(for: [Album.self])
         }
     }
 }
